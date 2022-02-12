@@ -7,6 +7,18 @@ void main() {
   runApp(const MyApp());
 }
 
+class Router extends NuRouter{
+  @override
+  String get initialRoute => 'home';
+
+  @override
+  List<NuRoute<NuRouter, Object, Object>> get registerRoutes => [
+    HomeRouter(),
+    DetailsRoute()
+  ];
+
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
 
@@ -18,13 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Nuvigator.routes(initialRoute: 'home', routes: [
-        NuRouteBuilder(path: 'home', builder: (BuildContext contextNuvigator, __, ___) => HomeScreen(onPressed: (){
-          Nuvigator.of(contextNuvigator).open('details');
-        },), screenType: materialScreenType),
-        NuRouteBuilder(
-            path: 'details', builder: (_, __, ___) => const DetailsScreen(), screenType: materialScreenType)
-      ]),
+      home: Nuvigator(router: Router()),
     );
   }
 
