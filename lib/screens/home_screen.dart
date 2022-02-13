@@ -5,7 +5,7 @@ class HomeRouter extends NuRoute {
   @override
   Widget build(BuildContext context, NuRouteSettings<Object> settings) {
     return HomeScreen(onPressed: (){
-      nuvigator.pushNamed('details');
+      nuvigator.pushNamed('details', arguments: {'message': 'Hello world'});
     },);
   }
 
